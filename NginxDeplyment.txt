@@ -1,0 +1,8 @@
+docker run -d -it --name="nginx01" -p 3344:80 nginx01
+ctrl+p+q
+curl localhost:3344
+docker ps
+docker exec -it nginx01 /bin/bash
+whereis nginx01
+exit
+docker stop nginx01

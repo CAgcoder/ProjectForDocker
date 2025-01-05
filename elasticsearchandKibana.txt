@@ -1,0 +1,2 @@
+docker run -d --name elasticsearch -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" -e ES_JAVA_OPTS="-Xms64m -Xmx512m" elasticsearch:7.17.26 docker stats dockercontainerId
+curl localhost:9200

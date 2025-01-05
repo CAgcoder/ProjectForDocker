@@ -1,0 +1,6 @@
+docker run -it --rm tomcat
+docker run -d --name="tomcat01" -p 3355:8080 tomcat
+docker exec -it tomcat01 /bin/bash
+cp -r webapps.dist/* webapps
+exit
+docker stop tomcat01

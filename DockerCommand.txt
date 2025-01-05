@@ -27,7 +27,7 @@ docker run image
 -d
 -it             dive into the Container, use exit for quit ,Ctrl+p+q means quit the container but dont stop the container
                 docker run -it centos /bin/bash   
--p
+-p              localhostProt:dockerPort
 -p
 
 docker ps       show the Container which is running 
