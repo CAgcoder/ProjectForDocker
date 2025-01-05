@@ -1,0 +1,61 @@
+docker version
+docker info
+docker --help
+
+
+#Image commandline
+
+docker images
+-a, --all show all images
+-q, --quiet only show numeric ids
+
+docker search 
+docker search mysql --filter=STARS=3000
+
+docker pull
+docker pull xxx:version number download specific version of service
+
+docker rmi -f Imageid 
+docker rmi -f Imageid Imageid Imageid delete multiple images
+docker rmi -f $(docker images -aq) delet all images
+
+
+#Container commandline
+
+docker run image
+--name="Name"
+-d
+-it             dive into the Container, use exit for quit ,Ctrl+p+q means quit the container but dont stop the container
+                docker run -it centos /bin/bash   
+-p
+-p
+
+docker ps       show the Container which is running 
+-a              show all containers
+-n=?            show the newest containers
+-q              only shows the ids
+
+docker rm containerId
+docker rm -f $(docker ps -aq)       delete all containers
+-f              force delete container
+docker ps -a -q|xargs docer rm      delete all containers
+
+docker start containerId
+docker restart containerId
+docker stop containerId
+docker kill containerId
+
+docker run -d centos /bin/sh -c "while true;do echo tinggaocui;sleep 1;done"
+docker logs 
+-tf
+--tail number
+docker logs -tf --tail 10 dce7b86171bf
+
+docker top containerId      show the process
+
+docker inspect containerId  show the metadata of the container
+
+docker exec -it containerId bashShell           dive into the container and open a new terminal
+docker attach containerId                       dive into the container and show the running terminal
+
+docker cp containerId:Path localHostPath        copy the file from docker to localhost
