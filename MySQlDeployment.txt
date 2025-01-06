@@ -1,0 +1,18 @@
+docker search mysql
+docker pull mysql:9.1
+docker run -d -p 3310:3306  --name="mysql01" -v /home/mysql/conf:/etc/mysql/conf.d -v /home/mysql/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 mysql:9.1
+
+docker volume ls
+docker run -d -P --name nginx01 -v /etc/nginx nginx             without name
+docker run -d -P --name nginx02 -v withName:/etc/nginx nginx    with name
+docker volume inspect withName
+
+in linux all of the volume of the docker container settle down in the dir: /var/lib/docker/volumes/xxxx/_data
+
+
+docker run -d -P --name nginx02 -v withName:/etc/nginx:ro nginx     ## ro: readonly ro means can only operate in the localhost
+docker run -d -P --name nginx02 -v withName:/etc/nginx:rw nginx     ## rw: readwrite
+
+docker run -d -p 3310:3306  --name="mysql01" -v /etc/mysql/conf.d -v /var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 mysql:9.1
+docker run -d -p 3310:3306  --name="mysql02" -e MYSQL_ROOT_PASSWORD=123456 --volumes-from mysql01 mysql:9.1
+

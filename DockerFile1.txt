@@ -1,0 +1,16 @@
+FROM centos
+
+VOLUME ["volume01","volume02"]
+
+CMD echo "----end----" && /bin/bash
+
+docker build -f /Docker/ProjectForDocker/DockerFile.txt -t tinggaocui/centos:v1 .
+
+docker run -it --name docker01 tinggaocui/centos:v1
+docker run -it --name docker02 --volumes-from docker01 tinggaocui/centos:v1
+
+
+1.write a docker file
+2.docker build 
+3.docker run
+4.docker push
