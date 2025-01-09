@@ -3,7 +3,7 @@ docker info
 docker --help
 
 
-#Image commandline
+### Image commandline ###
 
 docker images
 -a, --all show all images
@@ -19,15 +19,19 @@ docker rmi -f Imageid
 docker rmi -f Imageid Imageid Imageid delete multiple images
 docker rmi -f $(docker images -aq) delet all images
 
+docker commit -m="Message" -a="Author" containerId Imagename 
 
-#Container commandline
+
+
+### Container commandline ###
+
 
 docker run image
 --name="Name"
 -d
 -it             dive into the Container, use exit for quit ,Ctrl+p+q means quit the container but dont stop the container
                 docker run -it centos /bin/bash   
--p              localhostProt:dockerPort
+-p              localhostPort:dockerPort
 -p
 
 docker ps       show the Container which is running 
@@ -59,3 +63,14 @@ docker exec -it containerId bashShell           dive into the container and open
 docker attach containerId                       dive into the container and show the running terminal
 
 docker cp containerId:Path localHostPath        copy the file from docker to localhost
+
+
+
+### Docker volum ###
+
+
+for example: Data Persistence (MySQL)
+
+Data can be shared between containers, and data generated inside a Docker container can be synchronized to the local system.
+
+docker run -it -v localHostPath:containerPath 
