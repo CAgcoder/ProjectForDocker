@@ -1,0 +1,3 @@
+ip addr
+netstat -lnt 监听端口
+chmod +x xxx/xxx/xxxx.  赋予权限

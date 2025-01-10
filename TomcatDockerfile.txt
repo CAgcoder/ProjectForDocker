@@ -1,0 +1,26 @@
+FROM centos
+MAINTAINTER TinggaoCui<tginfo001@gmail.com>
+
+COPY readme.txt /usr/local/readme.txt
+
+ADD jdk-8u11-linux-x64.tar.gz /usr/local/
+ADD apache-tomcat-9.0.22.tar.gz /usr/local/
+
+run yum -y install vim
+
+ENV MYPATH /usr/local
+WORKDIR $MYPATH
+
+ENV JAVA_HOME /usr/local/jdk1.8.0_11
+ENV CLASSPATH $JAVA_HOME/lib/dt.jar:%JAVA_HOME/lib/tools.jar
+ENV CATALINA_HOME /usr/local/apache-tomcat-9.0.22
+ENV CATALINA_BATH
+ENV PATH $PATH:$JAVA_HOME/bin:$CATALINA_HOME/lib:$CATALINA_HOME/bin
+
+EXPOSE 9090
+
+CMD /usr/local/apache-tomcat-9.0.22/bin/startup.sh && tail -f usr/local/apache-tomcat-9.0.22/logs/catalina.out
+
+docker build Dockerfile -t diytomecat .
+docker run -d -p 9090:8080 --name tinggaodiytomcat -v /home/tinggaocui/build/tomcat/test:/usr/local/apache-tomcat-9.0.22/webapps/test -v /home/tinggaocui/build/tomcat/tomcatlogs/:/usr/local/apache-tomcat-9.0.22/logs diytomcat
+
